@@ -13,6 +13,7 @@ const useAxios = ({ repositoryFunction, props }: UseAxiosProps) => {
     setLoading(true);
     setError(false);
     setData(null);
+    if (!repositoryFunction) return;
     repositoryFunction(props).then((response) => {
       if (response && response.isError) {
         setError(true);
@@ -25,7 +26,7 @@ const useAxios = ({ repositoryFunction, props }: UseAxiosProps) => {
         // dispose if needed
       };
     });
-  }, [props, repositoryFunction]);
+  }, [props]);
 
   return { data, loading, error };
 };

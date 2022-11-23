@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import MealList from "../components/MealList/MealList";
 import SearchBar from "../components/SearchBar/SearchBar";
 import useAxios from "../hooks/useAxios";
-import { getRandomMeal, getMealByName } from "../repositories/mealRepository";
+import { getMeals } from "../repositories/mealRepository";
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const { data, loading } = useAxios({
-    repositoryFunction: searchQuery
-      ? () => getMealByName({ name: searchQuery })
-      : getRandomMeal,
+    repositoryFunction: getMeals,
+    props: searchQuery,
   });
 
   const handleSearchSubmit = (query: string) => {
@@ -23,6 +23,7 @@ export default function HomePage() {
     <PageWraper>
       <SearchBar onSearchSubmit={handleSearchSubmit} isLoading={loading} />
       {data && <p>{data.meals[0].idMeal}</p>}
+      {data && <MealList items={data?.meals} />}
     </PageWraper>
   );
 }

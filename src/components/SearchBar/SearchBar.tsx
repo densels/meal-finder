@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import styled from "styled-components";
+import Button from "../Button/Button";
 
 interface SearchBarProps {
   onSearchSubmit: (searchString: string) => void;
@@ -24,14 +25,11 @@ const SearchBar = ({ onSearchSubmit, isLoading }: SearchBarProps) => {
         name={searchInput}
         placeholder="Search for meals..."
       />
-      <button
-        id="submit"
-        type="button"
-        disabled={isLoading}
-        onClick={() => onSearchSubmit(searchInput)}
-      >
-        Search
-      </button>
+      <Button
+        text="Search"
+        isDisabled={isLoading}
+        clickHandler={() => onSearchSubmit(searchInput)}
+      />
     </div>
   );
 };

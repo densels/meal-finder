@@ -1,6 +1,6 @@
 export interface Meal {
   idMeal: string;
-  strMea: string;
+  strMeal: string;
   strDrinkAlternate: any;
   strCategory: string;
   strArea: string;
@@ -49,7 +49,7 @@ export interface Meal {
   strMeasure19: string;
   strMeasure20: string;
   strSource: string;
-  strImageSource: any;
+  strImageSource: string;
   strCreativeCommonsConfirmed: any;
   dateModified: any;
 }

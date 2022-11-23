@@ -30,4 +30,11 @@ const getMealByName = async ({
   return response;
 };
 
-export { getRandomMeal, getMealByName };
+const getMeals = async (name?: string): Promise<Meal | Error | any> => {
+  if (!name) {
+    return getRandomMeal();
+  }
+  return getMealByName({ name });
+};
+
+export { getMeals, getMealByName };
