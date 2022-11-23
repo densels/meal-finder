@@ -5,7 +5,7 @@ interface UseAxiosProps {
   props?: any;
 }
 const useAxios = ({ repositoryFunction, props }: UseAxiosProps) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<null | any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 

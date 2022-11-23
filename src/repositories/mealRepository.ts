@@ -8,9 +8,9 @@ type Error = {
 
 const getRandomMeal = async (): Promise<Meal | Error | any> => {
   const response = await get({
-    url: "www.themealdb.com/api/json/v1/1/random.php",
+    url: "/random.php",
   });
-  console.log("get random meal response");
+  console.log("get random meal response", response);
   return response;
 };
 
@@ -24,7 +24,7 @@ const getMealByName = async ({
   if (!name)
     return { isError: true, error: "Please provide a meal name to search for" };
   const response = await get({
-    url: `www.themealdb.com/api/json/v1/1/search.php?s=${name}`,
+    url: `/search.php?s=${name}`,
   });
   console.log("get meal by name result", response);
   return response;
