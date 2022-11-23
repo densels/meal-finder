@@ -16,15 +16,26 @@ const MealList = ({ items }: MealListProps) => {
   };
 
   return (
-    <div>
-      <ul>
-        {items &&
-          items.map((item, index) => (
-            <MealCard key={index} meal={item} onClick={handleItemClick} />
-          ))}
-      </ul>
-    </div>
+    <MealsGrid>
+      {items &&
+        items.map((item, index) => (
+          <MealCard key={index} meal={item} onClick={handleItemClick} />
+        ))}
+    </MealsGrid>
   );
 };
 
 export default MealList;
+
+const MealsGrid = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 350px));
+  grid-auto-columns: minmax(250px, auto);
+  gap: 16px;
+  @media (max-width: 950px) {
+    grid-template-columns: repeat(2, minmax(300px, 350px));
+  }
+  @media (max-width: 650px) {
+    grid-template-columns: repeat(1, minmax(300px, 350px));
+  }
+`;

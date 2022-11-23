@@ -22,14 +22,16 @@ export default function HomePage() {
   return (
     <PageWraper>
       <SearchBar onSearchSubmit={handleSearchSubmit} isLoading={loading} />
-      {data && <p>{data.meals[0].idMeal}</p>}
       {data && <MealList items={data?.meals} />}
     </PageWraper>
   );
 }
 
 const PageWraper = styled.div`
+  width: 100vw;
+  height: 100vw;
   display: flex;
-  flex-direction: table-column;
-  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  /* overflow: hidden; */
 `;
