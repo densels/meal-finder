@@ -8,14 +8,17 @@ interface MealCardProps {
 }
 
 const MealCard = ({ meal, onClick }: MealCardProps) => (
-  <CardWrapper onClick={() => onClick(meal.idMeal)}>
+  <CardWrapper
+    data-testid="meal-card-wrapper"
+    onClick={() => onClick(meal.idMeal)}
+  >
     <CardImage background={meal.strMealThumb || ""} />
     <CardTextWrapper>
-      <CardTitle id="mealName" data-test-id="mealNameText">
+      <CardTitle id="mealName" data-testid="mealNameText">
         {meal.strMeal}
       </CardTitle>
     </CardTextWrapper>
-    <CardText id="mealOrigin" data-test-id="mealOriginText">
+    <CardText id="mealOrigin" data-testid="mealOriginText">
       {meal.strArea}
     </CardText>
   </CardWrapper>

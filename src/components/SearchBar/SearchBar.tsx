@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import styled from "styled-components";
-import Button from "../Button/Button";
 
 interface SearchBarProps {
   onSearchSubmit: (searchString: string) => void;
@@ -16,8 +15,9 @@ const SearchBar = ({ onSearchSubmit, isLoading }: SearchBarProps) => {
   };
 
   return (
-    <div>
-      <input
+    <SearchBarWrapper data-testid="search-bar-wrapper" action="">
+      <SearchInput
+        data-testid="search-input-field"
         id="searchbar"
         disabled={isLoading}
         onChange={handleInputChange}
@@ -25,13 +25,46 @@ const SearchBar = ({ onSearchSubmit, isLoading }: SearchBarProps) => {
         name={searchInput}
         placeholder="Search for meals..."
       />
-      <Button
-        text="Search"
-        isDisabled={isLoading}
-        clickHandler={() => onSearchSubmit(searchInput)}
-      />
-    </div>
+      <SearchButton
+        data-testid="search-input-button"
+        disabled={isLoading}
+        onClick={() => onSearchSubmit(searchInput)}
+      >
+        Search
+      </SearchButton>
+    </SearchBarWrapper>
   );
 };
 
 export default SearchBar;
+
+const SearchBarWrapper = styled.form`
+  display: flex;
+  margin: 2.5em;
+  padding: 1.5em;
+  justify-content: center;
+  max-width: 25em;
+`;
+
+const SearchButton = styled.button`
+  width: auto;
+  height: auto;
+  border: 1px solid #be9d1a;
+  background: #be9d1a;
+  text-align: center;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+`;
+
+const SearchInput = styled.input`
+  width: 100%;
+  border: 3px solid #be9d1a;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #000;
+`;

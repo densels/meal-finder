@@ -17,7 +17,6 @@ let axiosInstance = axios.create({
 // as well as shared and consistent error handling
 const get = async (props: GetProps): Promise<any> => {
   const { url, params } = props;
-  console.log("calling url", axios.defaults.baseURL);
   return new Promise((resolve) => {
     axiosInstance
       .get(url, params)

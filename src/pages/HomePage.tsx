@@ -5,6 +5,8 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import useAxios from "../hooks/useAxios";
 import { getMeals } from "../repositories/mealRepository";
 
+const mealTimerProps = ["breakfast", "lunch", "dinner"];
+
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const { data, loading } = useAxios({
@@ -16,12 +18,17 @@ export default function HomePage() {
     setSearchQuery(query);
   };
 
-  useEffect(() => {
-    console.log("loading first time");
-  }, []);
+  useEffect(() => {}, []);
+
   return (
-    <PageWraper>
-      <SearchBar onSearchSubmit={handleSearchSubmit} isLoading={loading} />
+    <PageWraper data-testid="home-page-wrapper">
+      <div>
+        <PageTitle data-testid="home-page-title">
+          What's for{" "}
+          {mealTimerProps[Math.floor(Math.random() * mealTimerProps.length)]}...
+        </PageTitle>
+        <SearchBar onSearchSubmit={handleSearchSubmit} isLoading={loading} />
+      </div>
       {data && <MealList items={data?.meals} />}
     </PageWraper>
   );
@@ -34,4 +41,8 @@ const PageWraper = styled.div`
   align-items: center;
   flex-direction: column;
   /* overflow: hidden; */
+`;
+
+const PageTitle = styled.h2`
+  color: #e9c46a;
 `;
