@@ -10,7 +10,6 @@ const getRandomMeal = async (): Promise<Meal | Error | any> => {
   const response = await get({
     url: "/random.php",
   });
-  console.log("get random meal response", response);
   return response;
 };
 
