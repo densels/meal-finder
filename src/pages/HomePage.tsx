@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 import MealList from "../components/MealList/MealList";
 import SearchBar from "../components/SearchBar/SearchBar";
 import useAxios from "../hooks/useAxios";
@@ -29,6 +30,7 @@ export default function HomePage() {
         </PageTitle>
         <SearchBar onSearchSubmit={handleSearchSubmit} isLoading={loading} />
       </div>
+      {loading && <LoadingSpinner />}
       {data && <MealList items={data?.meals} />}
     </PageWraper>
   );

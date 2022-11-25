@@ -11,7 +11,6 @@ interface MealListProps {
 const MealList = ({ items }: MealListProps) => {
   const navigate = useNavigate();
   const handleItemClick = (id: string) => {
-    console.log("clicked on single meal", id);
     navigate(`${ROUTES.mealPage}${id}`);
   };
 
